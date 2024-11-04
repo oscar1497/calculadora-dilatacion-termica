@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Física</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculadora de Dilatación y Conducción Térmica</h1>
+
+    <!-- Sección para cálculos de dilatación térmica -->
+    <h2>Cálculo de Dilatación Térmica</h2>
+    <label for="tipoDilatacion">Tipo de dilatación:</label>
+    <select id="tipoDilatacion">
+        <option value="lineal">Lineal</option>
+        <option value="superficial">Superficial</option>
+        <option value="volumetrica">Volumétrica</option>
+    </select>
+    
+    <label for="variableDilatacion">Variable a encontrar:</label>
+    <select id="variableDilatacion">
+        <option value="dilatacion">Dilatación (ΔL)</option>
+        <option value="longitudInicial">Longitud/Área/Volumen inicial (L0)</option>
+        <option value="coeficiente">Coeficiente de dilatación (α)</option>
+        <option value="deltaTemperatura">Cambio de temperatura (ΔT)</option>
+    </select>
+    
+    <label for="dilatacion">Dilatación (ΔL) en metros:</label>
+    <input type="number" id="dilatacion" step="any">
+    
+    <label for="longitudInicial">Longitud/Área/Volumen inicial (L0) en metros:</label>
+    <input type="number" id="longitudInicial" step="any">
+    
+    <label for="deltaTemperatura">Cambio de temperatura (ΔT) en °C o K:</label>
+    <input type="number" id="deltaTemperatura" step="any">
+    
+    <label for="coeficiente">Coeficiente de dilatación (α) en 1/°C:</label>
+    <input type="number" id="coeficiente" step="any">
+    
+    <button onclick="calcularDilatacion()">Calcular Dilatación</button>
+    <div id="resultadoDilatacion"></div>
+
+    <!-- Nueva sección para la Ley de Conducción Térmica de Fourier -->
+    <h2>Ley de Conducción Térmica de Fourier</h2>
+    <label for="variableFourier">Variable a encontrar:</label>
+    <select id="variableFourier">
+        <option value="tasaCalor">Tasa de transferencia de calor (ΔQ/Δt)</option>
+        <option value="conductividad">Conductividad térmica (k)</option>
+        <option value="area">Área (A)</option>
+        <option value="diferenciaTemperatura">Diferencia de temperatura (ΔT)</option>
+        <option value="distancia">Distancia (L)</option>
+    </select>
+    
+    <label for="tasaCalor">Tasa de transferencia de calor (ΔQ/Δt) en W:</label>
+    <input type="number" id="tasaCalor" step="any">
+    
+    <label for="conductividad">Conductividad térmica (k) en W/(m·K):</label>
+    <input type="number" id="conductividad" step="any">
+    
+    <label for="area">Área (A) en m²:</label>
+    <input type="number" id="area" step="any">
+    
+    <label for="diferenciaTemperatura">Diferencia de temperatura (ΔT) en °C o K:</label>
+    <input type="number" id="diferenciaTemperatura" step="any">
+    
+    <label for="distancia">Distancia (L) en m:</label>
+    <input type="number" id="distancia" step="any">
+    
+    <button onclick="calcularConduccionTermica()">Calcular</button>
+    <div id="resultadoConduccion"></div>
+
+    <!-- Sección de conversión de unidades -->
+    <h2>Conversor de Unidades</h2>
+    <label for="valorConvertir">Valor a convertir:</label>
+    <input type="number" id="valorConvertir" step="any">
+    
+    <label for="unidadOrigen">Unidad de origen:</label>
+    <select id="unidadOrigen">
+        <!-- Agrega aquí todas las unidades disponibles, incluyendo las nuevas -->
+        <option value="metros">Metros</option>
+        <option value="milimetros">Milímetros</option>
+        <option value="centimetros">Centímetros</option>
+        <option value="metros cuadrados">Metros cuadrados</option>
+        <option value="centimetros cuadrados">Centímetros cuadrados</option>
+        <option value="milimetros cuadrados">Milímetros cuadrados</option>
+        <option value="metros cubicos">Metros cúbicos</option>
+        <option value="centimetros cubicos">Centímetros cúbicos</option>
+        <option value="milimetros cubicos">Milímetros cúbicos</option>
+        <option value="julios">Julios</option>
+        <option value="calorias">Calorías</option>
+        <option value="kilocalorias">Kilocalorías</option>
+        <option value="celsius">Grados Celsius</option>
+        <option value="fahrenheit">Grados Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+        <option value="rankine">Rankine</option>
+    </select>
+    
+    <label for="unidadDestino">Unidad de destino:</label>
+    <select id="unidadDestino">
+        <!-- Agrega aquí todas las unidades disponibles, incluyendo las nuevas -->
+        <option value="metros">Metros</option>
+        <option value="milimetros">Milímetros</option>
+        <option value="centimetros">Centímetros</option>
+        <option value="metros cuadrados">Metros cuadrados</option>
+        <option value="centimetros cuadrados">Centímetros cuadrados</option>
+        <option value="milimetros cuadrados">Milímetros cuadrados</option>
+        <option value="metros cubicos">Metros cúbicos</option>
+        <option value="centimetros cubicos">Centímetros cúbicos</option>
+        <option value="milimetros cubicos">Milímetros cúbicos</option>
+        <option value="julios">Julios</option>
+        <option value="calorias">Calorías</option>
+        <option value="kilocalorias">Kilocalorías</option>
+        <option value="celsius">Grados Celsius</option>
+        <option value="fahrenheit">Grados Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+        <option value="rankine">Rankine</option>
+    </select>
+    
+    <button onclick="convertirUnidad()">Convertir</button>
+    <div id="resultadoConversion"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
